@@ -6,4 +6,3 @@
 *.DS_Store
 .well-known
 runtime
-runtime/*
