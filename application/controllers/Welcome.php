@@ -90,9 +90,9 @@ class Welcome extends Base_Controller {
 
     // 登出
     public function loginout() {
-        $result = $this->session->unset_userdata('admin_auth');
+        $this->session->unset_userdata('admin_auth');
         $this->adminLog->auto_admin_log("登出成功");
-        sendSuccess('登出成功', $result, $this->_admin_count);
+        sendSuccess('登出成功', 'loginOut', $this->_admin_count);
     }
 
     // 基本信息

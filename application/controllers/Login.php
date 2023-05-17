@@ -43,7 +43,7 @@ class Login extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array("form", "url", "common"));
-        $this->load->library(array("session","captcha","form_validation"));
+        $this->load->library(array("session", "captcha", "form_validation"));
         $this->load->model(array("admin", "adminLog"), "", true);
     }
 
@@ -51,7 +51,16 @@ class Login extends CI_Controller {
      * 登陆首页
      */
     public function index() {
-        $this->load->view('/login/login');
+        // 检查用户是否已经登录
+        $userdata        = $this->session->get_userdata();
+        $currentUserAuth = $userdata['admin_auth'] ?? "";
+        if (!$currentUserAuth) {
+            $this->load->view('/login/login');
+        }
+
+        if ($this->admin->get_where_admin_info(['id' => $currentUserAuth])) {
+            $this->load->view('/welcome/index');
+        }
     }
 
     /**
