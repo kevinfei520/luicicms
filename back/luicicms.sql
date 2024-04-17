@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 100513
+ Source Server Version : 50744
  Source Host           : localhost:3306
  Source Schema         : luicicms
 
  Target Server Type    : MySQL
- Target Server Version : 100513
+ Target Server Version : 50744
  File Encoding         : 65001
 
- Date: 25/06/2022 00:24:21
+ Date: 17/04/2024 11:26:49
 */
 
 SET NAMES utf8mb4;
@@ -27,12 +27,12 @@ CREATE TABLE `ad_admin` (
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '管理员密码',
   `mobile` char(20) DEFAULT '0' COMMENT '手机号',
   `email` varchar(255) DEFAULT '0' COMMENT '邮箱',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0禁用/1启动',
-  `last_login_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '上次登录时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0禁用/1启动',
+  `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上次登录时间',
   `last_login_ip` varchar(16) NOT NULL DEFAULT '' COMMENT '上次登录IP',
-  `login_count` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '登录次数',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `login_count` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '登录次数',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员';
 
@@ -49,7 +49,7 @@ INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status
 INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status`, `last_login_time`, `last_login_ip`, `login_count`, `create_time`, `update_time`) VALUES (20, 'ZVlHI0', '57d4f35f5a46805d48df1589dc6b0452', '13800138000', '7934373@qq.com', 1, 0, '', 0, 1618045987, 1618046441);
 INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status`, `last_login_time`, `last_login_ip`, `login_count`, `create_time`, `update_time`) VALUES (22, '7WBgBu', '15f383061d8a55bb2c9e6acf23c9f0e3', '13800138000', '3283726@qq.com', 1, 0, '', 0, 1618046416, 1618046416);
 INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status`, `last_login_time`, `last_login_ip`, `login_count`, `create_time`, `update_time`) VALUES (23, 'SJEYZY', '25af5a7e21cb6e41c9ec26acbcb66fa1', '13800138000', '78362628@qq.com', 1, 0, '', 0, 1618046517, 1618046517);
-INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status`, `last_login_time`, `last_login_ip`, `login_count`, `create_time`, `update_time`) VALUES (25, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '794783766@qq.com', 1, 1656087749, '127.0.0.1', 0, 1631715451, 1656087749);
+INSERT INTO `ad_admin` (`id`, `username`, `password`, `mobile`, `email`, `status`, `last_login_time`, `last_login_ip`, `login_count`, `create_time`, `update_time`) VALUES (25, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '794783766@qq.com', 1, 1713324205, '127.0.0.1', 0, 1631715451, 1713324205);
 COMMIT;
 
 -- ----------------------------
@@ -58,7 +58,7 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_admin_log`;
 CREATE TABLE `ad_admin_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `admin_id` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '管理员id',
+  `admin_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '管理员id',
   `username` varchar(32) NOT NULL DEFAULT '' COMMENT '管理员用户名',
   `useragent` varchar(255) NOT NULL DEFAULT '' COMMENT 'User-Agent',
   `ip` varchar(16) NOT NULL DEFAULT '' COMMENT 'ip地址',
@@ -67,10 +67,10 @@ CREATE TABLE `ad_admin_log` (
   `type` varchar(32) NOT NULL DEFAULT '' COMMENT '资源类型',
   `param` text NOT NULL COMMENT '请求参数',
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员日志';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员日志';
 
 -- ----------------------------
 -- Records of ad_admin_log
@@ -89,6 +89,9 @@ INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `ur
 INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (11, 25, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/login/checkLogin', 'POST', 'application/x-www-form-urlencode', '', '登陆成功', 1656087745, 1656087745);
 INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (12, 0, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/welcome/loginout', 'POST', 'application/x-www-form-urlencode', '', '登出成功', 1656087749, 1656087749);
 INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (13, 0, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/login/generate_captcha', 'GET', '', '', '获取验证码', 1656087751, 1656087751);
+INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (14, 0, '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/login/generate_captcha', 'GET', '', '', '获取验证码', 1713324115, 1713324115);
+INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (15, 0, '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/login/generate_captcha', 'GET', '', '', '获取验证码', 1713324120, 1713324120);
+INSERT INTO `ad_admin_log` (`id`, `admin_id`, `username`, `useragent`, `ip`, `url`, `method`, `type`, `param`, `remark`, `create_time`, `update_time`) VALUES (16, 25, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', '127.0.0.1', 'my.luicicms.com/login/checkLogin', 'POST', 'application/x-www-form-urlencode', '', '登陆成功', 1713324124, 1713324124);
 COMMIT;
 
 -- ----------------------------
@@ -97,23 +100,23 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_article`;
 CREATE TABLE `ad_article` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `cid` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '分类ID',
+  `cid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `image` varchar(255) DEFAULT '' COMMENT '图片',
   `author` varchar(255) DEFAULT '' COMMENT '作者',
-  `summary` text DEFAULT NULL COMMENT '简介',
-  `photo` text DEFAULT NULL COMMENT '相册',
-  `content` longtext DEFAULT NULL COMMENT '内容',
-  `view` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '点击量',
-  `is_top` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否置顶',
-  `is_hot` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否推荐',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态',
-  `sort_order` int(11) NOT NULL DEFAULT 100 COMMENT '排序',
+  `summary` text COMMENT '简介',
+  `photo` text COMMENT '相册',
+  `content` longtext COMMENT '内容',
+  `view` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '点击量',
+  `is_top` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否置顶',
+  `is_hot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `sort_order` int(11) NOT NULL DEFAULT '100' COMMENT '排序',
   `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
   `description` varchar(255) DEFAULT '' COMMENT '描述',
-  `fabulous` int(11) NOT NULL DEFAULT 0 COMMENT '点赞数',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `fabulous` int(11) NOT NULL DEFAULT '0' COMMENT '点赞数',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文章';
 
@@ -141,9 +144,9 @@ CREATE TABLE `ad_auth_group` (
   `name` varchar(64) NOT NULL DEFAULT '',
   `description` varchar(255) NOT NULL DEFAULT '',
   `rules` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='权限组';
 
@@ -166,8 +169,8 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `ad_auth_group_access`;
 CREATE TABLE `ad_auth_group_access` (
-  `uid` smallint(5) unsigned NOT NULL DEFAULT 1 COMMENT '用户id',
-  `group_id` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '权限组id',
+  `uid` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '用户id',
+  `group_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '权限组id',
   PRIMARY KEY (`uid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='权限授权';
 
@@ -208,12 +211,12 @@ CREATE TABLE `ad_auth_rule` (
   `authorityName` varchar(255) NOT NULL DEFAULT '' COMMENT '权限名称',
   `menuUrl` varchar(255) NOT NULL DEFAULT '',
   `menuIcon` varchar(64) NOT NULL DEFAULT '',
-  `orderNumber` int(11) NOT NULL DEFAULT 0 COMMENT '排序',
+  `orderNumber` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `isMenu` varchar(255) DEFAULT '1',
   `authority` varchar(255) DEFAULT NULL,
-  `checked` int(3) NOT NULL DEFAULT 0,
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `checked` int(3) NOT NULL DEFAULT '0',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`authorityId`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='权限规则';
 
@@ -308,10 +311,10 @@ CREATE TABLE `ad_carousel` (
   `url` varchar(255) DEFAULT '' COMMENT '链接',
   `target` varchar(10) DEFAULT '' COMMENT '打开方式',
   `image` varchar(255) DEFAULT '' COMMENT '图片',
-  `sort_order` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '排序',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `sort_order` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='轮播广告';
 
@@ -334,14 +337,14 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_category`;
 CREATE TABLE `ad_category` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `pid` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '上级分类ID',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
   `category_name` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
-  `sort_order` int(11) NOT NULL DEFAULT 100 COMMENT '排序',
+  `sort_order` int(11) NOT NULL DEFAULT '100' COMMENT '排序',
   `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
   `description` varchar(255) DEFAULT '' COMMENT '描述',
   `curl` varchar(255) DEFAULT NULL,
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=766 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='分类';
 
@@ -1029,11 +1032,11 @@ CREATE TABLE `ad_config` (
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '配置标识',
   `type` varchar(32) NOT NULL DEFAULT '' COMMENT '配置类型',
   `value` text NOT NULL COMMENT '默认值',
-  `options` text DEFAULT NULL COMMENT '选项值',
-  `sort_order` int(11) NOT NULL DEFAULT 100 COMMENT '排序',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `options` text COMMENT '选项值',
+  `sort_order` int(11) NOT NULL DEFAULT '100' COMMENT '排序',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='配置';
 
@@ -1068,8 +1071,8 @@ CREATE TABLE `ad_menu` (
   `target` varchar(255) DEFAULT '' COMMENT '跳转方式',
   `nickname` varchar(255) DEFAULT '' COMMENT '昵称',
   `status` int(3) DEFAULT NULL COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='菜单表';
 
@@ -1113,14 +1116,14 @@ CREATE TABLE `ad_messageboard` (
   `mobile` char(20) DEFAULT '' COMMENT '手机',
   `email` varchar(32) NOT NULL DEFAULT '' COMMENT '邮箱',
   `url` varchar(100) NOT NULL DEFAULT '' COMMENT '留言的url',
-  `login_count` int(11) NOT NULL DEFAULT 0 COMMENT '留言次数',
+  `login_count` int(11) NOT NULL DEFAULT '0' COMMENT '留言次数',
   `comment` varchar(255) DEFAULT NULL COMMENT '留言内容',
   `comment_post_id` int(11) DEFAULT NULL COMMENT '文章id',
   `comment_parent` int(11) DEFAULT NULL COMMENT '回复的留言id',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0禁用/1启动',
-  `last_login_time` int(11) unsigned DEFAULT 0 COMMENT '最近留言时间',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0禁用/1启动',
+  `last_login_time` int(11) unsigned DEFAULT '0' COMMENT '最近留言时间',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='留言';
 
@@ -1140,16 +1143,16 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_product`;
 CREATE TABLE `ad_product` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `pid` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '分类ID',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `price` varchar(255) NOT NULL DEFAULT '100' COMMENT '排序',
   `name` varchar(255) DEFAULT '' COMMENT '关键字',
   `phone` varchar(255) DEFAULT '' COMMENT '描述',
   `purl` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
-  `status` smallint(1) NOT NULL DEFAULT 1 COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `status` smallint(1) NOT NULL DEFAULT '1' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=456 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='商品表';
 
@@ -1319,9 +1322,9 @@ CREATE TABLE `ad_system` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '名称',
   `content` char(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '值',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT 1 COMMENT '状态1启用，2禁用',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态1启用，2禁用',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `title` (`title`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统设置';
@@ -1331,12 +1334,12 @@ CREATE TABLE `ad_system` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (52, 'sitename', 'LuiciCMS', 1, 1578330394, 1578330394);
-INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (53, 'domain', 'http://luicicms.kevinfei.com/welcome/index', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (53, 'domain', 'https://luicicms.kevinfei.com/welcome/index', 1, 1578330394, 1578330394);
 INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (54, 'cache', '|png|gif|jpg|jpeg|zip|rar|webp|php|java', 1, 1578330394, 1578330394);
 INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (55, 'title', 'LuiciCMS 简洁易用后台管理系统', 1, 1578330394, 1578330394);
 INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (56, 'keywords', 'LuiciCMS、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, 1578330394, 1578330394);
 INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (57, 'descript', 'LuiciCMS、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, 1578330394, 1578330394);
-INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (58, 'copyright', '© 2022 luicicms.kevinfei.com MIT LICENSE', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` (`id`, `title`, `content`, `status`, `create_time`, `update_time`) VALUES (58, 'copyright', '© 2024 luicicms.kevinfei.com MIT LICENSE', 1, 1578330394, 1578330394);
 COMMIT;
 
 -- ----------------------------
@@ -1348,14 +1351,14 @@ CREATE TABLE `ad_user` (
   `username` varchar(255) DEFAULT NULL COMMENT '用户名',
   `mobile` char(20) DEFAULT '' COMMENT '手机',
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
-  `sex` int(11) DEFAULT 0,
-  `integral` int(11) DEFAULT 0,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0禁用/1启动',
-  `last_login_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '上次登录时间',
+  `sex` int(11) DEFAULT '0',
+  `integral` int(11) DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0禁用/1启动',
+  `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上次登录时间',
   `last_login_ip` varchar(16) NOT NULL DEFAULT '' COMMENT '上次登录IP',
-  `login_count` int(11) NOT NULL DEFAULT 0 COMMENT '登录次数',
-  `create_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `login_count` int(11) NOT NULL DEFAULT '0' COMMENT '登录次数',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员';
 
