@@ -9,7 +9,7 @@ LuiciCMS 是由 Jingfei Ding 基于 CodeIgniter 3.0框架为基础后端框架�
 
 ### 演示地址
 
-项目地址：http://luicicms.kevinfei.com/login/index  
+项目地址：https://luicicms.kevinfei.com/login/index  
 username ： admin  
 password ： 123456
 
