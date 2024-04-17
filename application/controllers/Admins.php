@@ -35,9 +35,9 @@ class Admins extends Base_Controller
     /**
      * 获取管理员详情
      *
-     * @return array $result
+     * @return void
      */
-    public function getinfo()
+    public function getInfo()
     {
         $id     = $this->input->post('id');
         $result = $this->admin->get_admin_info($id);

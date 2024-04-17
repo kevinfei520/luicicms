@@ -39,7 +39,7 @@
             $(function(){
                 var query = window.location.search.substring(1);
                 var id = layuimini.getQueryVariable(query, 'id');
-                $.post("/admins/getinfo",{id:id},function(result){
+                $.post("/admins/getInfo",{id:id},function(result){
                     var obj = JSON.parse(result).data;
                     $('input[name=id]').val(obj.id);
                     $('input[name=username]').val(obj.username);

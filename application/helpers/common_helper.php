@@ -142,17 +142,18 @@ if(!function_exists('getHeaders'))
 /**
  * 成功响应
  *
- * @param array  $data
- * @param string $message
- * @param int    $code
- * @param array  $headers
+ * @param  array  $data
+ * @param  string  $message
+ * @param  int  $code
+ * @param  array  $headers
  */
 if (!function_exists('sendSuccess')) {
-    function sendSuccess($message = 'success', $data = [], $count = 0, $code = 200) {
+    function sendSuccess($message = 'success', $data = [], $count = 0, $code = 200)
+    {
         get_instance()->output->set_header(getHeaders()); //允许跨域
         $responseData['code']    = $code;
         $responseData['count']   = $count;
-        $responseData['message'] = (string)$message;
+        $responseData['message'] = (string) $message;
         if (!empty($data)) {
             $responseData['data'] = $data;
         }
