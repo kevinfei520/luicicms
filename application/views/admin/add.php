@@ -2,7 +2,7 @@
 
 <# block cententFrom #>
     <# parent #>
-    <# slot title #> 
+    <# slot title #>
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 25px;">
             <legend>添加信息</legend>
         </fieldset>
@@ -15,7 +15,7 @@
     <script type="text/javascript">
         layui.use(['form', 'layer', 'layedit', 'laydate'], function () {
             var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
-            
+
             //自定义验证规则
             form.verify({
                 username: function (value) {
@@ -35,18 +35,18 @@
                 }
             });
             $(function(){
-                $.post("/admins/getauthgroup",{},function(result){
+                $.post("/admins/getAuthGroup",{},function(result){
                     console.log(result);
                     result = JSON.parse(result)
                     var res = result.data;  var str = '';
-                    for (var i=0; i < res.length; i++){   
-                        str += '<option value="'+res[i].id+'">'+res[i].name+'</option>'; 
+                    for (var i=0; i < res.length; i++){
+                        str += '<option value="'+res[i].id+'">'+res[i].name+'</option>';
                     }
-                    $('select[name=permission_group]').append(str);  
-                    layui.form.render("select"); 
+                    $('select[name=permission_group]').append(str);
+                    layui.form.render("select");
                 });
             });
-            
+
             // 进行提交操作
             form.on('submit(demo1)', function (data) {
                 $.ajax({
@@ -61,7 +61,7 @@
                         layer.close(sub);
                         layer.msg(data.message, {icon: 1,time: 2000 }, function(){
                             window.location.href = '/admins/index.html';
-                        });  
+                        });
                     },
                     error: function (data) {
                         layer.alert(JSON.stringify(data));

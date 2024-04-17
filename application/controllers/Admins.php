@@ -4,11 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Admin 管理员控制器
  *
- * @property  CI_DB_driver  db
- * @property  AuthGroup     AuthGroup
+ * @property  CI_DB_driver db
+ * @property  AuthGroup AuthGroup
  * @property  Hulk_template hulk_template
  */
-class Admins extends Base_Controller {
+class Admins extends Base_Controller
+{
 
     protected $_count = 0;  //数据列表总数
 
@@ -17,7 +18,8 @@ class Admins extends Base_Controller {
      *
      * @access public
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->_count = $this->admin->get_admin_list_count();
     }
@@ -25,7 +27,8 @@ class Admins extends Base_Controller {
     /**
      * 管理员首页
      */
-    public function index() {
+    public function index()
+    {
         $this->hulk_template->parse('/admin/index');
     }
 
@@ -34,7 +37,8 @@ class Admins extends Base_Controller {
      *
      * @return array $result
      */
-    public function getinfo() {
+    public function getinfo()
+    {
         $id     = $this->input->post('id');
         $result = $this->admin->get_admin_info($id);
         sendSuccess('管理员详情', $result, $this->_count);
@@ -45,7 +49,8 @@ class Admins extends Base_Controller {
      *
      * @return array $result
      */
-    public function getlist() {
+    public function getlist()
+    {
         $result = $this->admin->get_admin_list($this->_page, $this->_limit, $this->search_params);
         sendSuccess('获取列表', $result, $this->_count);
     }
@@ -53,7 +58,8 @@ class Admins extends Base_Controller {
     /**
      * 获取权限组
      */
-    public function getauthgroup() {
+    public function getAuthGroup()
+    {
         $this->load->model('AuthGroup', '', true);
         $result = $this->AuthGroup->get_group_list();
         sendSuccess('数据获取成功', $result, $this->_count);
@@ -62,7 +68,8 @@ class Admins extends Base_Controller {
     /**
      * 添加数据
      */
-    public function add() {
+    public function add()
+    {
         $param = $this->input->post('data');
         if ($param) {
             $permission_group = $param['permission_group'];
@@ -86,7 +93,8 @@ class Admins extends Base_Controller {
     /**
      * 编辑管理信息
      */
-    public function edit() {
+    public function edit()
+    {
         $param            = $this->input->post("data");
         $id               = isset($param["id"]) && empty($param["id"]) ? $param["id"] : 0;
         $permission_group = isset($param["permission_group"]) && empty($param["permission_group"]) ? $param["permission_group"] : 0;
@@ -119,7 +127,8 @@ class Admins extends Base_Controller {
     /**
      * 删除操作
      */
-    public function delete() {
+    public function delete()
+    {
         $id     = $this->input->post('id');
         $result = $this->admin->delete_entry($id);
         sendSuccess('数据删除成功', $result, $this->_count);
@@ -128,7 +137,8 @@ class Admins extends Base_Controller {
     /**
      * 删除全部操作
      */
-    public function delete_all() {
+    public function delete_all()
+    {
         $ids    = $this->input->post('data');
         $result = array();
         foreach ($ids as $key => $value) {
