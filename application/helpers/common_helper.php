@@ -75,7 +75,7 @@ if (!function_exists('data_auth_sign')) {
 if (!function_exists('upload_file_qiniuyun')) {
     function upload_file_qiniuyun($filedata = '')
     {
-        $domain    = 'http://bucketpublic.kevinfei.com/'; //空间绑定的域名
+        $domain    = 'https://bucketpublic.kevinfei.com/'; //空间绑定的域名
         $bucket    = 'bucket_public';
         $accessKey = 'PJtpD3cbFLl-R1RhHx4EeiVNJjfQ1AFXdH4zWAN1';
         $secretKey = '_WB-JzPvRO2ZpIK_ooVZxmvYrWHCdOUHoeyeoAn8';
