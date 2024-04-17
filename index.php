@@ -285,11 +285,11 @@ define('VIEWPATH', $view_folder . DIRECTORY_SEPARATOR);
  */
 // 自定义公共目录路径
 const COMMONPATH = APPPATH . 'common' . DIRECTORY_SEPARATOR;
-function __autoload($class) {
+spl_autoload_register(function ($class) {
     if (strpos($class, 'CI_') !== 0) {
         @include_once(COMMONPATH . $class . '.php');
     }
-}
+});
 
 /*
  * --------------------------------------------------------------------
